@@ -25,32 +25,57 @@ window = turtle.Screen()
 window.tracer(0)
 
 # Section 2: Setup
-s1 = create_sprite("greenm", 0,0)
+s1 = create_sprite("gmonster", -150,0)
 set_background("moon")
+s2 = create_sprite("bmonster", 150,0)
 
 # Section 3: Controls
 # TODO - define your controls
-# TODO - pick keys for each control
+def move_up():
+	s1.setheading(90)
+	s1.forward(10)
+def move_up2():
+	s2.setheading(90)
+	s2.forward(10)
+def move_left():
+	s1.setheading(180)
+	s1.forward(10)
+def move_left2():
+	s2.setheading(180)
+	s2.forward(10)
+def move_down():
+	s1.setheading(270)
+	s1.forward(10)
+def move_down2():
+	s2.setheading(270)
+	s2.forward(10)
+def move_right():
+	s1.setheading(0)
+	s1.forward(10)
+def move_right2():
+	s2.setheading(0)
+	s2.forward(10)
 
-# Section 4: Game Loop
+window.onkeypress(move_right, "Right")
+window.onkeypress(move_left, "Left")
+window.onkeypress(move_down, "Down")
+window.onkeypress(move_up, "Up")
+window.onkeypress(move_right2, "d")
+window.onkeypress(move_left2, "a")
+window.onkeypress(move_down2, "s")
+window.onkeypress(move_up2, "w")
 window.listen()
 timer = 0
 while True:
+	if get_distance(s1,s2) < 50:
+		print("GOT YOU!")
+		break
+	timer += 1
 	time.sleep(0.1)
-	timer += 1  
-	 
-    
- 	# TODO - code for automatic actions
-
-
-
-
-
 
 	window.update()
 
-	# if :
-	# 	break
+	
 	
 
 print("Game Over")
